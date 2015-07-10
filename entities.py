@@ -26,16 +26,14 @@ class Entity:
 		self.pos_sprite = 0  # position de l'image dans le dico
 
 		self.position = position
-		# vitesse de deplacement nombre de pixel  d'une case
+		# definit le nombre de pixel dont il doit se deplacer
 		self.direction = [0, None]
 
 	def move(self, animation):
 
-		if self.direction[
-			0] > 0:  # si le joueur veut se deplacer vers la droite
+		if self.direction[0] > 0:  # le joueur veut se deplacer vers la droite
 			self.position[0] -= 1
-			self.direction[
-				0] -= 1  # on remet le deplacement a 0 / reduit la vitesse de deplacement
+			self.direction[0] -= 1  # reduit le nb de pixel qu'il reste à faire
 			return
 
 		if self.direction[
@@ -44,7 +42,7 @@ class Entity:
 			self.direction[0] += 1  # on remet le deplacement a 0
 			return
 
-		if self.direction[1] is not None:
+		if self.direction[1] is not None:  # si le joueur saute/tombe
 			self.position[1] += self.direction[1]
 			self.direction[1] += 1
 
@@ -77,3 +75,22 @@ class Ennemy(Entity):
 		self.pos_fin = pos_fin
 
 		self.radius = radius  # radius dans lequel est detecté un joueur
+
+
+class Projectile(Entity):
+
+	def __init__(self, name, pv, damage, sprites, position, emetteur):
+
+		Entity.__init__(self, name, pv, damage, sprites, position)
+		self.emetteur = emetteur  # permet de ne pas blesser l'emetteur s'il
+		#  se prend son propre projectile
+
+
+def collision(pos_entity, pos_object):
+	"""fonction dectectant si un objet entre en collision avec une liste
+	d'objet, s'arrete des qu'il y a collision."""
+	for obstacle in pos_object:
+		if pos_entity[0] == obstacle[0] and pos_entity[1] == obstacle[1]:
+			return True
+
+	return False

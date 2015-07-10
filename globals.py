@@ -10,9 +10,11 @@ __maintainer__ = 'Antoine Grimod'
 __email__ = ''
 __status__ = 'Production'
 
-game_speed = 60  # definit le nombre de tours par seconde de la boucle principale
+game_speed = 60  # definit le nombre de tours/seconde de la boucle principale
 screen_speed = 30  # definit le nombre d'image par seconde
 
 ticks = 0  # Définti un temps universel pour tout le programme
 
 continuer = True  # permet de savoir si l'on continue le jeu ou pas
+
+controls = {"saut" : ""}
