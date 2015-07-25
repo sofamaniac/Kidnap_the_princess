@@ -85,8 +85,8 @@ class InputBox:
 def update(surface, elements, coords):
 	"""Fonction mettant a jour une surface en blittant les element aux coordonnees donnees.
 	Attend 2 list. Si les deux listes non pas la meme taille, return -1"""
-
-	if len(elements) == len(coords):  # on verifie que les deux listes aient la meme taille
+	#todo : pour faciliter et optimiser le process voir les pygame.sprite.group
+	if len(elements) == len(coords):  # les deux listes ont la meme taille
 
 		for i in range(len(elements)):
 
@@ -98,3 +98,6 @@ def update(surface, elements, coords):
 
 	else:
 		return -1
+
+#todo: fonction rezise pour l'editeur de niveau en utilisant 
+# pygame.transform.scale
